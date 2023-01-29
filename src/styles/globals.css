@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.app_wrapper {
+  @apply absolute top-0 left-0 flex h-screen w-screen flex-col bg-bg;
+}
+
+.btn {
+  @apply rounded-md bg-none p-2 px-4 font-semibold hover:brightness-110;
+}
+
+.btn_main,
+.btn-main {
+  @apply bg-main text-white;
+}
+
+.btn-light,
+.btn_light {
+  @apply bg-white text-main;
+}
+
+.btn-accent,
+.btn_accent {
+  @apply bg-accent text-white;
+}
+
+.btn-cancel,
+.btn_cancel {
+  @apply bg-red-600 text-white;
+}
+
+.form-control {
+  @apply flex h-[75px] w-[250px] flex-col justify-start gap-2;
+}
+
+.form-control-input {
+  @apply h-full w-full rounded-md p-2 text-light outline-none;
+}
+
+.form-control-label {
+  @apply font-semibold;
+}
