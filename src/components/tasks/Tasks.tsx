@@ -1,6 +1,6 @@
 import { useModal } from "../../context/modal";
 import { api } from "../../utils/api";
-import CreateTaskModal from "./Create";
+import CreateTaskModal from "./modals/Create";
 import Task from "./Task";
 
 export default function Tasks() {
@@ -17,7 +17,7 @@ export default function Tasks() {
   return (
     <>
       {tasks?.length && tasks?.length > 0 ? (
-        <div className="flex h-full w-full flex-col gap-2 rounded-md bg-main p-4">
+        <div className="flex h-full w-full flex-col gap-2 overflow-y-auto rounded-md bg-main p-4">
           {mapTasks()}
         </div>
       ) : (

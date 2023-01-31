@@ -1,12 +1,16 @@
 import { Task as ITask } from "@prisma/client";
 
 import { FaTrash } from "react-icons/fa";
+import { useModal } from "../../context/modal";
 import { api } from "../../utils/api";
+import ViewTaskModal from "./modals/View";
 
 export interface TaskProps extends ITask {}
 
 export default function Task({ id, title, description, color }: TaskProps) {
   const utils = api.useContext();
+
+  const { openModal } = useModal();
 
   const { mutate: deleteTask } = api.task.delete.useMutation({
     onSuccess() {
@@ -15,6 +19,10 @@ export default function Task({ id, title, description, color }: TaskProps) {
   });
   const handleDelete = () => {
     deleteTask(id);
+  };
+
+  const handleDetails = () => {
+    openModal(<ViewTaskModal {...{ id, title, description, color }} />);
   };
 
   return (
@@ -28,7 +36,12 @@ export default function Task({ id, title, description, color }: TaskProps) {
 
       <div className="flex  w-full flex-col gap-4">
         <h1 className="text-2xl font-bold text-main">{title}</h1>
-        <p className="text-main">{description}</p>
+        <p
+          className="cursor-pointer  select-none text-accent"
+          onClick={handleDetails}
+        >
+          details
+        </p>
       </div>
 
       <div

@@ -1,5 +1,5 @@
 import { useModal } from "../../context/modal";
-import CreateTaskModal from "./Create";
+import CreateTaskModal from "./modals/Create";
 
 export default function TasksHeader() {
   const { openModal } = useModal();
